@@ -3,7 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>cf3a4850-3736-4fb5-a74e-8fb2ef774d30</UserSecretsId>
+<!--    <UserSecretsId>cf3a4850-3736-4fb5-a74e-8fb2ef774d30</UserSecretsId>-->
     <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
@@ -29,8 +29,6 @@
     <PackageReference Include="Syncfusion.Blazor.Grid" Version="22.2.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedServices\SharedServices.csproj">
-    </ProjectReference>
     <ProjectReference Include="..\CodeFuseAI_Shared\CodeFuseAI_Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
