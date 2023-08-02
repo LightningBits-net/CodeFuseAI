@@ -1,7 +1,7 @@
 ﻿using System;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
 	public class OrderDTO
     {

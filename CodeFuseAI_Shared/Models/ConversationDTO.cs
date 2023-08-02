@@ -1,9 +1,9 @@
 ﻿using System;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
     public class ConversationDTO
     {

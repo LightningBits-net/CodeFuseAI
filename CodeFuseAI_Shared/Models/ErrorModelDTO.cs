@@ -1,6 +1,6 @@
 ﻿// LightningBits
 using System;
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
     public class ErrorModelDTO
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SharedServices.Commons
+namespace CodeFuseAI_Shared.Commons
 {
 	public static class SD
 	{

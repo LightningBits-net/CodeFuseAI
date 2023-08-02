@@ -1,11 +1,11 @@
 ﻿using System;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SharedServices.Models;
+using CodeFuseAI_Shared.Models;
 
-namespace SharedServices.Data
+namespace CodeFuseAI_Shared.Data
 {
     public class Conversation
     {

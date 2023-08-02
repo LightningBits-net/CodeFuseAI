@@ -1,11 +1,11 @@
 ﻿using System;
-using ECommerce_Server.Service.IService;
+using CodeFuseAI.Service.IService;
 using System.Security.Claims;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECommerce_Server.Service
+namespace CodeFuseAI.Service
 {
     public class ClientService : IClientService
     {

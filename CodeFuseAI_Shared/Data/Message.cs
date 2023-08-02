@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SharedServices.Data
+namespace CodeFuseAI_Shared.Data
 {
     public class Message
     {

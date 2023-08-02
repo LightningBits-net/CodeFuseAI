@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
-using ECommerce_Server.Service;
+using CodeFuseAI.Service;
 using System.Threading.Tasks;
-using ECommerce_Server.Service.IService;
+using CodeFuseAI.Service.IService;
 
-namespace ECommerce_Server
+namespace CodeFuseAI
 {
     public class CustomComponentBase : ComponentBase
     {

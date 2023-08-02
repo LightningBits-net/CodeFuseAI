@@ -2,7 +2,7 @@
 
 
 
-namespace ECommerce_Server.Service.IService
+namespace CodeFuseAI.Service.IService
 {
     public interface IClientService
     {

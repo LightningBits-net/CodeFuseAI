@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 
 #nullable disable
 
-namespace SharedServices.Migrations
+namespace CodeFuseAI_Shared.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230122194955_BlogInitial")]
@@ -231,7 +231,7 @@ namespace SharedServices.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SharedServices.Data.Blog", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -291,7 +291,7 @@ namespace SharedServices.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.BlogCategory", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.BlogCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -311,7 +311,7 @@ namespace SharedServices.Migrations
                     b.ToTable("BlogCategories");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.Category", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -330,7 +330,7 @@ namespace SharedServices.Migrations
                     b.ToTable("ECommerceCategories");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.OrderDetail", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -365,7 +365,7 @@ namespace SharedServices.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.OrderHeader", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.OrderHeader", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -435,7 +435,7 @@ namespace SharedServices.Migrations
                     b.ToTable("OrderHeaders");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.Product", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -475,7 +475,7 @@ namespace SharedServices.Migrations
                     b.ToTable("ECommerceProducts");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.ProductPrice", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.ProductPrice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -504,7 +504,7 @@ namespace SharedServices.Migrations
                     b.ToTable("ECommerceProductPrices");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.ToDoItem", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.ToDoItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -531,7 +531,7 @@ namespace SharedServices.Migrations
                     b.ToTable("ToDoItems");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.ApplicationUser", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -593,9 +593,9 @@ namespace SharedServices.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SharedServices.Data.Blog", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.Blog", b =>
                 {
-                    b.HasOne("SharedServices.Data.BlogCategory", "BlogCategory")
+                    b.HasOne("CodeFuseAI_Shared.Data.BlogCategory", "BlogCategory")
                         .WithMany()
                         .HasForeignKey("BlogCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -604,9 +604,9 @@ namespace SharedServices.Migrations
                     b.Navigation("BlogCategory");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.OrderDetail", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.OrderDetail", b =>
                 {
-                    b.HasOne("SharedServices.Data.Product", "Product")
+                    b.HasOne("CodeFuseAI_Shared.Data.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -615,9 +615,9 @@ namespace SharedServices.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.Product", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.Product", b =>
                 {
-                    b.HasOne("SharedServices.Data.Category", "Category")
+                    b.HasOne("CodeFuseAI_Shared.Data.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -626,9 +626,9 @@ namespace SharedServices.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.ProductPrice", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.ProductPrice", b =>
                 {
-                    b.HasOne("SharedServices.Data.Product", "Product")
+                    b.HasOne("CodeFuseAI_Shared.Data.Product", "Product")
                         .WithMany("ECommerceProductPrices")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -637,7 +637,7 @@ namespace SharedServices.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SharedServices.Data.Product", b =>
+            modelBuilder.Entity("CodeFuseAI_Shared.Data.Product", b =>
                 {
                     b.Navigation("ECommerceProductPrices");
                 });

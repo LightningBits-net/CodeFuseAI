@@ -1,10 +1,10 @@
 ﻿// LightningBits
 using System;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
     public class ProductPriceDTO
     {

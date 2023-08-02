@@ -2,11 +2,11 @@
 using System;
 using AutoMapper;
 using Microsoft.VisualBasic;
-using SharedServices.Data;
-using SharedServices.Models;
-using SharedServices.ViewModels;
+using CodeFuseAI_Shared.Data;
+using CodeFuseAI_Shared.Models;
+using CodeFuseAI_Shared.ViewModels;
 
-namespace SharedServices.Mapper
+namespace CodeFuseAI_Shared.Mapper
 {
     public class MappingProfile : Profile
     {

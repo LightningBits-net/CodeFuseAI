@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SharedServices.Migrations
+namespace CodeFuseAI_Shared.Migrations
 {
     /// <inheritdoc />
     public partial class RevertUpdateClientToAllowNulls : Migration

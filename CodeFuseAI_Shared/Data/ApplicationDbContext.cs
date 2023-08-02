@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace SharedServices.Data
+namespace CodeFuseAI_Shared.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {

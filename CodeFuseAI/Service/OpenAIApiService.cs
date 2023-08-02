@@ -5,13 +5,15 @@ using System.Text.Json;
 using Internal;
 using System.Threading.Tasks;
 using Microsoft.DotNet.MSIdentity.Shared;
-using SharedServices.Data;
-using SharedServices.Models;
-using SharedServices.Repository;
-using SharedServices.Repository.IRepository;
-using ECommerce_Server.Service.IService;
+using CodeFuseAI_Shared.Data;
+using CodeFuseAI_Shared.Models;
+using CodeFuseAI_Shared.Repository;
+using CodeFuseAI_Shared.Repository.IRepository;
+using CodeFuseAI.Service.IService;
+using Microsoft.Extensions.Configuration;
 
-namespace ECommerce_Server.Service
+
+namespace CodeFuseAI.Service
 {
     public class OpenAiApiService : IOpenAiApiService
     {
@@ -29,7 +31,7 @@ namespace ECommerce_Server.Service
            
             //_apiKey = configuration["APIKeys:MyChatGPTAPI"];
             //_apiKey = configuration["APIKeys:KenChatGPTAPI"];
-            _apiKey = configuration["APIKeys:MyChatGPTDEVKEY"];
+            _apiKey = configuration["APIKeys:MyChatGPTDEVKEY2"];
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
 

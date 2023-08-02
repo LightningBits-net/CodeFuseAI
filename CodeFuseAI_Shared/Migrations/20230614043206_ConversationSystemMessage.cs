@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SharedServices.Migrations
+namespace CodeFuseAI_Shared.Migrations
 {
     /// <inheritdoc />
     public partial class ConversationSystemMessage : Migration

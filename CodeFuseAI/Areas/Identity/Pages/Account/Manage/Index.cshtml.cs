@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ECommerce_Server.Areas.Identity.Pages.Account.Manage
+namespace CodeFuseAI.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {

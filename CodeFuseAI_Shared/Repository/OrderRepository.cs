@@ -1,14 +1,14 @@
 ﻿using System;
 using AutoMapper;
-using SharedServices.Data;
-using SharedServices.Models;
-using SharedServices.ViewModels;
-using SharedServices.Repository.IRepository;
+using CodeFuseAI_Shared.Data;
+using CodeFuseAI_Shared.Models;
+using CodeFuseAI_Shared.ViewModels;
+using CodeFuseAI_Shared.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
-using SharedServices.Commons;
+using CodeFuseAI_Shared.Commons;
 
 
-namespace SharedServices.Repository
+namespace CodeFuseAI_Shared.Repository
 {
     public class OrderRepository : IOrderRepository
     {

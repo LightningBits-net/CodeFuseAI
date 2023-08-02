@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
 	
     public class BlogCategoryDTO

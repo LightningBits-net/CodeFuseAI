@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using SharedServices.Repository;
-using SharedServices.Repository.IRepository;
+using CodeFuseAI_Shared.Repository;
+using CodeFuseAI_Shared.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 using MudBlazor.Services;
-using ECommerce_Server.Service.IService;
-using ECommerce_Server.Service;
+using CodeFuseAI.Service.IService;
+using CodeFuseAI.Service;
 using Syncfusion.Blazor;
 using Microsoft.AspNetCore.Identity;
 

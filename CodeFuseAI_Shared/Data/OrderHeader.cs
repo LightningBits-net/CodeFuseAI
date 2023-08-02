@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SharedServices.Data
+namespace CodeFuseAI_Shared.Data
 {
 	public class OrderHeader
 	{

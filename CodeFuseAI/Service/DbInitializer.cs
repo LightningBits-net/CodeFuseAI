@@ -1,15 +1,15 @@
 ﻿
 using System;
-using ECommerce_Server.Service.IService;
+using CodeFuseAI.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor;
-using SharedServices.Commons;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Commons;
+using CodeFuseAI_Shared.Data;
 
 
 
-namespace ECommerce_Server.Service
+namespace CodeFuseAI.Service
 {
     public class DbInitializer : IDbInitializer
     {

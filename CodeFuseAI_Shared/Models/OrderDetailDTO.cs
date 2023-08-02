@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SharedServices.Models;
+using CodeFuseAI_Shared.Models;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
 	public class OrderDetailDTO
 	{

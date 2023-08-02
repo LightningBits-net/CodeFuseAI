@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SharedServices.Data;
-using SharedServices.Models;
-using SharedServices.Repository.IRepository;
+using CodeFuseAI_Shared.Data;
+using CodeFuseAI_Shared.Models;
+using CodeFuseAI_Shared.Repository.IRepository;
 
-namespace SharedServices.Repository
+namespace CodeFuseAI_Shared.Repository
 {
     public class MessageRepository : IMessageRepository
     {

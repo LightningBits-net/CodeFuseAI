@@ -1,14 +1,14 @@
 ﻿// LightningBits
 using System;
-using SharedServices.Repository.IRepository;
+using CodeFuseAI_Shared.Repository.IRepository;
 using AutoMapper;
-using SharedServices.Data;
-using SharedServices;
+using CodeFuseAI_Shared.Data;
+using CodeFuseAI_Shared;
 using Microsoft.EntityFrameworkCore;
-using SharedServices.Models;
+using CodeFuseAI_Shared.Models;
 using System.Reflection.Metadata;
 
-namespace SharedServices.Repository
+namespace CodeFuseAI_Shared.Repository
 {
     public class ClientRepository : IClientRepository
     {

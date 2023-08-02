@@ -1,7 +1,7 @@
 ﻿using System;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 
-namespace SharedServices.ViewModels
+namespace CodeFuseAI_Shared.ViewModels
 {
     public class Order
     {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
     public class ClientDTO
     {

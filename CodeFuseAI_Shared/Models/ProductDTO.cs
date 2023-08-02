@@ -2,9 +2,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SharedServices.Data;
+using CodeFuseAI_Shared.Data;
 
-namespace SharedServices.Models
+namespace CodeFuseAI_Shared.Models
 {
     public class ProductDTO
     {
