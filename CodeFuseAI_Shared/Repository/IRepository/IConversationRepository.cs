@@ -7,6 +7,7 @@ namespace CodeFuseAI_Shared.Repository.IRepository
 {
         public interface IConversationRepository
         {
+            Task<bool> BelongsToClient(int conversationId, int clientId);
             Task<ConversationDTO> Get(int id);
             Task<IEnumerable<ConversationDTO>> GetAll();
             Task<int> Delete(int id);

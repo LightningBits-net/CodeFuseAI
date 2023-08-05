@@ -418,10 +418,19 @@
     #endregion
 
     #region Message methods
-    private async Task LoadMessages()
+    protected async Task LoadMessages()
     {
+        var belongsToClient = await _conversationRepository.BelongsToClient(ConversationId, clientId);
 
-        Messages = (await _messageRepository.GetAllByConversationId(ConversationId)).ToList();
+        if (belongsToClient)
+        {
+            Messages = (await _messageRepository.GetAllByConversationId(ConversationId)).ToList();
+        }
+        else
+        {
+            // Handle the error appropriately - conversation does not belong to the client.
+            throw new UnauthorizedAccessException("The client does not have permission to access this conversation.");
+        }
     }
 
     private async Task SendMessage()

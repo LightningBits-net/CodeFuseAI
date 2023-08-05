@@ -1,0 +1,156 @@
+﻿@page "/Home"
+@page "/"
+@inject NavigationManager _navigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@attribute [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Client + "," + SD.Role_LightningChats)]
+
+
+<PageTitle>Lightning Chats</PageTitle>
+
+
+<AuthorizeView Roles="@SD.Role_Admin">
+    <div class="max-w-5xl mx-auto pt-10 p-8 flex justify-end">
+        <h1 class="font-display-italic font-extrabold text-5xl md:text-6xl italic leading-none max-w-xl">Welcome Admin</h1>
+    </div>
+</AuthorizeView>
+<AuthorizeView Roles="@SD.Role_LightningChats">
+    <div class="max-w-5xl mx-auto pt-10 p-8 flex justify-end">
+        <h1 class="font-display-italic font-extrabold text-5xl md:text-6xl italic leading-none max-w-xl">Welcome </h1>
+    </div>
+</AuthorizeView>
+
+<section class="dark:bg-gray-800 dark:text-gray-100">
+    <div class="container flex flex-col-reverse mx-auto lg:flex-row">
+        <div class="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
+            <AuthorizeView>
+                <MudCard Elevation="25">
+                    <MudCardContent>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div>
+                                <MudText Typo="Typo.h5">Lightningchats</MudText>
+                                <MudText Typo="Typo.caption">Alpha v.1</MudText>
+                            </div>
+                            <div>
+                                <MudText Typo="Typo.caption">Powered by ChatGPT turbo 16k</MudText>
+                            </div>
+                        </div>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Href="/my-chat" FullWidth="true" Variant="Variant.Outlined" Color="Color.Success">Chat now</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </AuthorizeView>
+
+            <div class="flex space-x-2 sm:space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+                <div class="space-y-2">
+                    <p class="text-lg font-medium leadi">AI Accuracy</p>
+                    <p class="leadi">While we strive to provide accurate responses, our AI isn't perfect. It may sometimes produce inaccurate or misleading information. Always use additional trusted resources when making important decisions.</p>
+                </div>
+            </div>
+            <div class="flex space-x-2 sm:space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+                <div class="space-y-2">
+                    <p class="text-lg font-medium leadi">Responsible Usage</p>
+                    <p class="leadi">Please refrain from using our service for malicious acts or to propagate harmful information. We reserve the right to suspend access to any user violating our terms of service.</p>
+                </div>
+            </div>
+            <div class="flex space-x-2 sm:space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+                <div class="space-y-2">
+                    <p class="text-lg font-medium leadi">Privacy</p>
+                    <p class="leadi">We value your privacy. All interactions are confidential, and we do not share or sell user data. Your conversation history is only stored temporarily to provide the service.</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="lg:w-1/2 xl:w-3/5 dark:bg-gray-800">
+            <div class="flex items-center justify-center p-4 md:p-8 lg:p-12">
+                <img src="https://images.unsplash.com/photo-1677442135136-760c813028c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" alt="" class="rounded-lg shadow-lg dark:bg-gray-500 aspect-video sm:min-h-96">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<div class="container mx-auto justify-center flex flex-wrap pb-20">
+    <AuthorizeView Roles="@SD.Role_Admin">
+        <div class="w-full md:w-1/2 lg:w-1/2 px-1 mb-12">
+            <MudCard Elevation="25">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">Client App</MudText>
+                    <MudText Typo="Typo.body2">Client Admin</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Href="/ClientList" Variant="Variant.Outlined" FullWidth="true" Color="Color.Success">Client List</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+        <div class="w-full md:w-1/2 lg:w-1/2 px-1 mb-12">
+            <MudCard Elevation="25">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">Product Manager</MudText>
+                    <MudText Typo="Typo.body2">Manage all your products here</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Href="/productlist" FullWidth="true" Variant="Variant.Outlined" Color="Color.Success">Manage Products</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-1/2 px-1 mb-12">
+            <MudCard Elevation="25">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">Blog Manager</MudText>
+                    <MudText Typo="Typo.body2">Manage all your Blog post here</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Href="/Bloglist" Variant="Variant.Outlined" FullWidth="true" Color="Color.Warning">Blog in Preview</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-1/2 px-1 mb-12">
+            <MudCard Elevation="25">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">TODO App</MudText>
+                    <MudText Typo="Typo.body2">Stay organized with your own ToDo list</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Href="/ToDoList" Variant="Variant.Outlined" FullWidth="true" Color="Color.Success">ToDo</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-1/2 px-1 mb-12">
+            <MudCard Elevation="25">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">Order MGNT</MudText>
+                    <MudText Typo="Typo.body2">Manage all your Sales here</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" FullWidth="true" Color="Color.Error">coming soon!</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-1/2 px-1 mb-12">
+            <MudCard Elevation="25">
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">Layout Designer</MudText>
+                    <MudText Typo="Typo.body2">Manage your website design</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" FullWidth="true" Color="Color.Error">coming soon!</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+    </AuthorizeView>
+</div>*@

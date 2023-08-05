@@ -23,6 +23,31 @@ namespace CodeFuseAI_Shared.Repository
             _mapper = mapper;
         }
 
+        public async Task<bool> BelongsToClient(int conversationId, int clientId)
+        {
+            try
+            {
+                if (conversationId == 0)
+                {
+                    return true;
+                }
+
+                var conversation = await _db.Conversations.FirstOrDefaultAsync(c => c.Id == conversationId);
+                if (conversation != null)
+                {
+                    return conversation.ClientId == clientId;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+
         public async Task<ConversationDTO> GetAndUpdateContext(int id)
         {
             try
