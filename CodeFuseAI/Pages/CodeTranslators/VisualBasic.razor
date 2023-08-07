@@ -1,0 +1,157 @@
+﻿
+@page "/visualbasic-translator"
+
+@attribute [Authorize(Roles = SD.Role_Admin + "," + SD.Role_LightningChats)]
+
+@inherits VisualBasicBase
+
+@using System.Text.RegularExpressions
+
+<PageTitle>VisualBasic-C#</PageTitle>
+
+
+<div class="flex">
+    <div class="w-full p-4">
+        <MudCard Elevation="25">
+            <MudCardContent>
+                <div class="flex items-center">
+                    <MudTooltip Text="Choose your Input">
+                        <MudSwitch @bind-Checked="isSwitched" Class="mx-2" Color="Color.Primary" @onclick="UpdateTitle" />
+                    </MudTooltip>
+                    <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">@InputLabel</label>
+                </div>
+                @if (!string.IsNullOrEmpty(ErrorMessage))
+                {
+                    <div class="text-red-500 mt-2 mb-2">@ErrorMessage</div>
+                }
+
+                <textarea id="inputCode" class="bg-gray-200 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          rows="10" @bind="@inputCode" style="white-space: pre;"></textarea>
+            </MudCardContent>
+            <MudCardActions class="flex w-1/2 justify-center mx-auto">
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" Class="flex-1 mr-2" OnClick="TranslateCode">Translate</MudButton>
+                <MudButton Color="Color.Secondary" Variant="Variant.Filled" Class="flex-1" OnClick="ResetPage">Reset</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </div>
+</div>
+
+
+<div class="flex flex-col sm:flex-row mt-4">
+
+    <!-- Input card -->
+    <div class="w-full shadow-2xl sm:w-1/2 p-4">
+        <MudCard>
+            <MudCardContent>
+                <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">Input</label>
+                <div class="flex items-center">
+                    @if (IsVBNetCodeSnippet(inputCode))
+                    {
+                        var styledContent = inputCode;
+                        styledContent = Regex.Replace(styledContent, @"(Public|Private|Sub|Function|Dim|End Sub|End Function)", "<span class='text-black'>$1</span>");
+                        styledContent = Regex.Replace(styledContent, @"\(([^)]*)\)", "<span class='text-green-500'>($1)</span>");
+
+                        <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
+                            <pre class="whitespace-pre-wrap"><code>@((MarkupString)styledContent)</code></pre>
+                        </div>
+                    }
+                    else if (IsCSharpCodeSnippet(inputCode))
+                    {
+                        var styledContent = inputCode;
+                        styledContent = Regex.Replace(styledContent, @"(public|private|protected|class|void|int|string|double|float|bool|get|set)", "<span class='text-black'>$1</span>");
+                        styledContent = Regex.Replace(styledContent, @"(?<=\s)(\w+)(?=\s*\{)", "<span class='text-black'>$1</span>"); // method or class names before {
+                        styledContent = Regex.Replace(styledContent, @"\{([^}]*)\}", "<span class='text-blue-500'>{$1}</span>");
+                        styledContent = Regex.Replace(styledContent, @"\(([^)]*)\)", "<span class='text-green-500'>($1)</span>");
+
+                        <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
+                            <pre class="whitespace-pre-wrap"><code>@((MarkupString)styledContent)</code></pre>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-left text-lg">@((MarkupString)inputCode.Replace("\n", "<br/>"))</p>
+                    }
+
+                </div>
+            </MudCardContent>
+        </MudCard>
+    </div>
+
+    <!-- Output card -->
+    <div class="w-full shadow-2xl sm:w-1/2 p-4">
+        <MudCard>
+            <MudCardContent>
+                <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">Output</label>
+
+                <div class="flex items-center">
+                    @if (IsLoading)
+                    {
+                        <div class="text-center">
+                            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+                        </div>
+                    }
+                    else
+                    {
+
+                        @if (IsCSharpCodeSnippet(outputCode))
+                            {
+                                var styledContent = Regex.Replace(outputCode, @"\{([^}]*)\}", "<span class='text-blue-500'>{$1}</span>");
+                                styledContent = Regex.Replace(styledContent, @"(public|private|protected|class|void|int|string|double|float|bool|get|set)", "<span class='text-black'>$1</span>");
+                                styledContent = Regex.Replace(styledContent, @"(?<=\s)(\w+)(?=\s*\{)", "<span class='text-black'>$1</span>"); // method or class names before {
+                                styledContent = Regex.Replace(styledContent, @"\{([^}]*)\}", "<span class='text-blue-500'>{$1}</span>");
+                                styledContent = Regex.Replace(styledContent, @"\(([^)]*)\)", "<span class='text-green-500'>($1)</span>");
+
+                            <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
+                                <pre class="whitespace-pre-wrap"><code>@((MarkupString)styledContent)</code></pre>
+                            </div>
+                            }
+                            else if (IsVBNetCodeSnippet(outputCode))
+                            {
+                                var styledContent = Regex.Replace(outputCode, @"(Public Class\s+\w+)(.*?)(End Class)", "$1<span class='text-blue-500'>$2</span>$3", RegexOptions.Singleline);
+                                styledContent = Regex.Replace(styledContent, @"(Public|Private|Sub|Function|Dim|End Sub|End Function)", "<span class='text-black'>$1</span>");
+                                styledContent = Regex.Replace(styledContent, @"\(([^)]*)\)", "<span class='text-green-500'>($1)</span>");
+
+                            <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
+                                <pre class="whitespace-pre-wrap"><code>@((MarkupString)styledContent)</code></pre>
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-left text-lg">@((MarkupString)outputCode.Replace("\n", "<br/>"))</p>
+                        }
+                    }
+                </div>
+            </MudCardContent>
+        </MudCard>
+    </div>
+
+</div>
+
+
+<!-- Code Review card -->
+<div class="w-full shadow-2xl p-2 mt-4">
+    <MudCard>
+        <MudCardHeader>
+            <div class="flex items-center justify-between">
+                <h3 class="text-2xl font-bold text-center">Code Review</h3>
+            </div>
+        </MudCardHeader>
+        <MudCardContent>
+            <div class="flex items-center bg-gray-200">
+                @if (IsLoading)
+                {
+                    <div class="text-center">
+                        <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+                    </div>
+                }
+
+                else
+                {
+                    <p class="p-10 text-left text-lg">@((MarkupString)CodeReviewResult.Replace("\n", "<br/>"))</p>
+                }
+            </div>
+        </MudCardContent>
+    </MudCard>
+</div>
+
+

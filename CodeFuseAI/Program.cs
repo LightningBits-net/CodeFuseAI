@@ -37,6 +37,7 @@ builder.Services.AddMudServices();
 builder.Services.AddSyncfusionBlazor();
 builder.Services.AddScoped<IOpenAiApiService, OpenAiApiService>();
 builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<ICodeTranslationService, CodeTranslationService>();
 
 
 
