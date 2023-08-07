@@ -11,11 +11,9 @@ using Syncfusion.Blazor;
 using Microsoft.AspNetCore.Identity;
 
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 
-// Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -38,8 +36,6 @@ builder.Services.AddSyncfusionBlazor();
 builder.Services.AddScoped<IOpenAiApiService, OpenAiApiService>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<ICodeTranslationService, CodeTranslationService>();
-
-
 
 
 var app = builder.Build();

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Text.RegularExpressions;
 using CodeFuseAI.Service.IService;
+using ColorCode;
 
 namespace CodeFuseAI.Pages.CodeTranslators
 {
@@ -62,7 +63,7 @@ namespace CodeFuseAI.Pages.CodeTranslators
 
         protected async Task TranslateCode()
         {
-            ErrorMessage = string.Empty; 
+            ErrorMessage = string.Empty;
 
             if (isSwitched && !IsCSharpCodeSnippet(inputCode))
             {
@@ -85,15 +86,28 @@ namespace CodeFuseAI.Pages.CodeTranslators
             {
                 outputCode = await _codeTranslationService.TranslateCSharpToVBNetAsync(inputCode);
                 CodeReviewResult = await _codeTranslationService.ExplainCodeDifferencesAsync(inputCode, outputCode, "C#", "VB.NET");
+                //inputCode = HighlightCode(inputCode, Languages.CSharp.Id);
+                //outputCode = HighlightCode(outputCode, Languages.VbDotNet.Id);
             }
             else
             {
                 outputCode = await _codeTranslationService.TranslateVBNetToCSharpAsync(inputCode);
                 CodeReviewResult = await _codeTranslationService.ExplainCodeDifferencesAsync(inputCode, outputCode, "VB.NET", "C#");
+                //inputCode = HighlightCode(inputCode, Languages.VbDotNet.Id);
+                //outputCode = HighlightCode(outputCode, Languages.CSharp.Id);
             }
+
 
             IsLoading = false;
         }
+
+        protected string HighlightCode(string code, string language)
+        {
+            var formatter = new HtmlFormatter();
+            return formatter.GetHtmlString(code, Languages.FindById(language));
+        }
+
+
 
         protected void ResetPage()
         {
