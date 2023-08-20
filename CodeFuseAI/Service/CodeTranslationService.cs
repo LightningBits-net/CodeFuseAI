@@ -32,8 +32,6 @@ namespace CodeFuseAI.Service
 
             try
             {
-                var prompt = $"The following is a VB.NET code snippet. Please translate it into equivalent C# code:\n{vbNetCode}";
-
                 var messages = new List<object>
                 {
                     new
@@ -95,8 +93,6 @@ namespace CodeFuseAI.Service
 
             try
             {
-                var prompt = $"The following is a C# code snippet. Please translate it into equivalent VB.NET code:\n{csharpCode}";
-
                 var messages = new List<object>
                  {
                     new
@@ -151,7 +147,6 @@ namespace CodeFuseAI.Service
 
         public async Task<string> ExplainCodeDifferencesAsync(string originalCode, string translatedCode, string originalLanguage, string translatedLanguage)
         {
-            var prompt = $"Given the specific {originalLanguage} code and its {translatedLanguage} translation provided below, please provide a detailed analysis and explanation of the differences, focusing on syntax, structure, and any language-specific features as it pertains to the code shared here:\nOriginal: {originalCode}\nTranslation: {translatedCode}";
 
             var messages = new List<object>
             {

@@ -40,6 +40,8 @@ namespace CodeFuseAI.Service
                     _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
                     _roleManager.CreateAsync(new IdentityRole(SD.Role_Client)).GetAwaiter().GetResult();
                     _roleManager.CreateAsync(new IdentityRole(SD.Role_LightningChats)).GetAwaiter().GetResult();
+                    _roleManager.CreateAsync(new IdentityRole(SD.Role_CodeTranslator)).GetAwaiter().GetResult();
+
                 }
                 else
                 {

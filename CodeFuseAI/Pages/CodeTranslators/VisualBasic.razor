@@ -1,7 +1,7 @@
 ﻿
 @page "/visualbasic-translator"
 
-@attribute [Authorize(Roles = SD.Role_Admin + "," + SD.Role_LightningChats)]
+@attribute [Authorize(Roles = SD.Role_Admin + "," + SD.Role_LightningChats + "," + SD.Role_CodeTranslator)]
 
 @inherits VisualBasicBase
 
@@ -36,82 +36,84 @@
     </div>
 </div>
 
+@if (!IsInactiveContent)
+    {
 
-<div class="flex flex-col sm:flex-row mt-4">
+    <div class="flex flex-col sm:flex-row mt-4">
 
-    <!-- Input card -->
-    <div class="w-full shadow-2xl sm:w-1/2 p-4">
-        <MudCard>
-            <MudCardContent>
-                <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">Input</label>
-                <div class="flex items-center">
-                    @if (IsVBNetCodeSnippet(inputCode))
-                    {
-                        var colorizedCode = HighlightCode(inputCode, "vbnet");
-                        <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
-                            <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
-                        </div>
-                    }
-                    else if (IsCSharpCodeSnippet(inputCode))
-                    {
-                        var colorizedCode = HighlightCode(inputCode, "csharp");
-                        <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
-                            <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
-                        </div>
-                    }
-                    else
-                    {
-                        <p class="text-left text-lg">@((MarkupString)inputCode.Replace("\n", "<br/>"))</p>
-                    }
-                </div>
-            </MudCardContent>
-        </MudCard>
-    </div>
-
-    <!-- Output card -->
-    <div class="w-full shadow-2xl sm:w-1/2 p-4">
-        <MudCard>
-            <MudCardContent>
-                <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">Output</label>
-
-                <div class="flex items-center">
-                    @if (IsLoading)
-                    {
-                        <div class="text-center">
-                            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
-                        </div>
-                    }
-                    else
-                    {
-                        @if (IsCSharpCodeSnippet(outputCode))
-                        {
-                            var colorizedCode = HighlightCode(outputCode, "c#");
-                            <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
+        <!-- Input card -->
+        <div class="w-full shadow-2xl m-2 bg-gray-200 sm:w-1/2 p-4">
+            <MudCard>
+                <MudCardContent>
+                    <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">Input</label>
+                    <div class="flex  items-center">
+                        @if (IsVBNetCodeSnippet(inputCode))
+                            {
+                                var colorizedCode = HighlightCode(inputCode, "vbnet");
+                            <div class=" p-10 rounded-md overflow-auto max-w-full text-lg">
                                 <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
                             </div>
-                        }
-                        else if (IsVBNetCodeSnippet(outputCode))
-                        {
-                            var colorizedCode = HighlightCode(outputCode, "vb.net");
-                               <div class="bg-gray-200 p-10 rounded-md overflow-auto max-w-full text-lg">
+                            }
+                            else if (IsCSharpCodeSnippet(inputCode))
+                            {
+                                var colorizedCode = HighlightCode(inputCode, "csharp");
+                            <div class=" p-10 rounded-md overflow-auto max-w-full text-lg">
                                 <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
                             </div>
-                        }
-                        else
-                        {
-                            <p class="text-left text-lg">@((MarkupString)outputCode.Replace("\n", "<br/>"))</p>
-                        }
-                    }
-                </div>
-            </MudCardContent>
-        </MudCard>
-    </div>
+                            }
+                            else
+                            {
+                            <p class="text-left text-lg">@((MarkupString)inputCode.Replace("\n", "<br/>"))</p>
+                            }
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        </div>
 
-</div>
+        <!-- Output card -->
+        <div class="w-full m-2 bg-gray-200 shadow-2xl sm:w-1/2 p-4">
+            <MudCard>
+                <MudCardContent>
+                    <label class="block text-gray-700 text-2xl font-bold mb-2" for="inputCode">Output</label>
+
+                    <div class="flex items-center">
+                        @if (IsProcessing)
+                            {
+                            <div class="text-center">
+                                <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+                            </div>
+                            }
+                            else
+                            {
+                            @if (IsCSharpCodeSnippet(outputCode))
+                                {
+                                    var colorizedCode = HighlightCode(outputCode, "c#");
+                                <div class=" p-10 rounded-md overflow-auto max-w-full text-lg">
+                                    <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
+                                </div>
+                                }
+                                else if (IsVBNetCodeSnippet(outputCode))
+                                {
+                                    var colorizedCode = HighlightCode(outputCode, "vb.net");
+                                <div class="p-10 rounded-md overflow-auto max-w-full text-lg">
+                                    <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
+                                </div>
+                                }
+                                else
+                                {
+                                <p class="text-left text-lg">@((MarkupString)outputCode.Replace("\n", "<br/>"))</p>
+                                }
+                            }
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        </div>
+
+    </div>
 
 
 <!-- Code Review card -->
-<div class="w-full shadow-2xl p-2 mt-4">
+<div class="w-full shadow-2xl bg-gray-200  p-2 mt-4">
     <MudCard>
         <MudCardHeader>
             <div class="flex items-center justify-between">
@@ -119,21 +121,20 @@
             </div>
         </MudCardHeader>
         <MudCardContent>
-            <div class="flex items-center bg-gray-200">
-                @if (IsLoading)
+            <div class="flex items-center">
+                @if (IsProcessingReview)
                 {
                     <div class="text-center">
                         <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
                     </div>
                 }
-
-                else
-                {
+                    else
+                    {
                     <p class="p-10 text-left text-lg">@((MarkupString)CodeReviewResult.Replace("\n", "<br/>"))</p>
-                }
+                    }
             </div>
         </MudCardContent>
     </MudCard>
 </div>
 
-
+    }

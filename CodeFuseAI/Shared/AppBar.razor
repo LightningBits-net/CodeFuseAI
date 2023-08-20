@@ -1,4 +1,4 @@
-﻿<AuthorizeView Roles="@($"{roleAdmin},{roleClient},{roleLightningChats}")">
+﻿<AuthorizeView Roles="@($"{roleAdmin},{roleClient},{roleLightningChats},{roleCodeTranslator}")">
     <Authorized>
         <MudAppBar Elevation="21" Dense="true">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Primary" Edge="Edge.Start"
@@ -26,5 +26,6 @@
     private string roleAdmin = CodeFuseAI_Shared.Commons.SD.Role_Admin;
     private string roleClient = CodeFuseAI_Shared.Commons.SD.Role_Client;
     private string roleLightningChats = CodeFuseAI_Shared.Commons.SD.Role_LightningChats;
+    private string roleCodeTranslator = CodeFuseAI_Shared.Commons.SD.Role_CodeTranslator;
 
 }

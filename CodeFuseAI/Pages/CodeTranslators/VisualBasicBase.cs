@@ -21,13 +21,20 @@ namespace CodeFuseAI.Pages.CodeTranslators
         protected ISnackbar snackBar { get; set; }
 
         public TranslationDirection selectedOption { get; set; } = TranslationDirection.VbNetToCSharp;
+
         public string CodeReviewResult { get; set; } = string.Empty;
         public string inputCode { get; set; } = string.Empty;
         public string outputCode { get; set; } = string.Empty;
-        public bool IsLoading { get; set; } = false;
+
+        public bool IsInactiveContent { get; set; } = true;
         public bool isSwitched { get; set; } = false;
-        public string title { get; set; } = "";
+        public bool IsProcessing { get; set; } = false;
+        public bool IsProcessingReview { get; set; } = false;
+
+
         public string ErrorMessage { get; set; } = string.Empty;
+        public string title { get; set; } = "";
+        public string InputLabel => isSwitched ? "Enter your C# code" : "Enter your VB.NET code";
 
         protected void UpdateTitle()
         {
@@ -41,73 +48,70 @@ namespace CodeFuseAI.Pages.CodeTranslators
             }
         }
 
-        public string InputLabel => isSwitched ? "Enter your C# code" : "Enter your VB.NET code";
-        public bool IsProcessing { get; set; } = false;
-
         public enum TranslationDirection
         {
             VbNetToCSharp,
             CSharpToVbNet
         }
 
-        protected override void OnInitialized()
-        {
-            IsProcessing = true;
-            base.OnInitialized();
-        }
-
         protected override async Task OnInitializedAsync()
         {
-            IsProcessing = false;
+            await base.OnInitializedAsync();
+            IsInactiveContent = true;
         }
 
         protected async Task TranslateCode()
         {
+            IsInactiveContent = false;
+            StateHasChanged();
             ErrorMessage = string.Empty;
 
             if (isSwitched && !IsCSharpCodeSnippet(inputCode))
             {
                 ErrorMessage = "Please provide a valid C# code snippet.";
                 snackBar.Add(ErrorMessage, Severity.Error);
-                IsLoading = false;
+                IsProcessing = false;
                 return;
             }
             else if (!isSwitched && !IsVBNetCodeSnippet(inputCode))
             {
                 ErrorMessage = "Please provide a valid VB.NET code snippet.";
                 snackBar.Add(ErrorMessage, Severity.Error);
-                IsLoading = false;
+                IsProcessing = false;
                 return;
             }
 
-            IsLoading = true;
+            IsProcessing = true;
 
             if (isSwitched)
             {
                 outputCode = await _codeTranslationService.TranslateCSharpToVBNetAsync(inputCode);
-                CodeReviewResult = await _codeTranslationService.ExplainCodeDifferencesAsync(inputCode, outputCode, "C#", "VB.NET");
-                //inputCode = HighlightCode(inputCode, Languages.CSharp.Id);
-                //outputCode = HighlightCode(outputCode, Languages.VbDotNet.Id);
             }
             else
             {
                 outputCode = await _codeTranslationService.TranslateVBNetToCSharpAsync(inputCode);
-                CodeReviewResult = await _codeTranslationService.ExplainCodeDifferencesAsync(inputCode, outputCode, "VB.NET", "C#");
-                //inputCode = HighlightCode(inputCode, Languages.VbDotNet.Id);
-                //outputCode = HighlightCode(outputCode, Languages.CSharp.Id);
             }
 
+            IsProcessing = false;
 
-            IsLoading = false;
+           
+
+            IsProcessingReview = true;
+
+            StateHasChanged();
+
+            CodeReviewResult = await _codeTranslationService.ExplainCodeDifferencesAsync(inputCode, outputCode, isSwitched ? "C#" : "VB.NET", isSwitched ? "VB.NET" : "C#");
+
+            IsProcessingReview = false;
+
         }
 
+        #region Helper methods
         protected string HighlightCode(string code, string language)
         {
             var formatter = new HtmlFormatter();
             return formatter.GetHtmlString(code, Languages.FindById(language));
         }
-
-
 
         protected void ResetPage()
         {
@@ -118,6 +122,8 @@ namespace CodeFuseAI.Pages.CodeTranslators
             isSwitched = false;
             title = "";
             IsProcessing = false;
+            IsInactiveContent = true;
+            StateHasChanged();
         }
 
         protected bool IsCSharpCodeSnippet(string text)
@@ -138,8 +144,7 @@ namespace CodeFuseAI.Pages.CodeTranslators
 
             return text.Contains("Sub") || text.Contains("End Sub") || text.Contains("Dim");
         }
+        #endregion
     }
-
-
 }
 

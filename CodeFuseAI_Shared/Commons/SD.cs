@@ -15,6 +15,7 @@ namespace CodeFuseAI_Shared.Commons
         public const string Role_Customer = "Customer";
         public const string Role_Client = "Client";
         public const string Role_LightningChats = "LightningChats";
+        public const string Role_CodeTranslator = "CodeTranslator";
 
         public const string Local_Token = "JWT Token";
         public const string Local_OrderDetails = "Local_OrderDetails";

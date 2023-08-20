@@ -44,7 +44,21 @@
         <MudNavLink Href="/Identity/Account/Manage" Icon="@Icons.Material.Filled.Settings" Match="NavLinkMatch.Prefix">Profile settings</MudNavLink>
         <MudNavLink Href="/contact" Icon="@Icons.Material.Filled.Mail" Match="NavLinkMatch.Prefix">Contact Us</MudNavLink>
     </AuthorizeView>
-    
+
+    <AuthorizeView Roles="@SD.Role_CodeTranslator">
+        <MudNavGroup Title="Code Translator" Expanded="false" Color="Color.Dark">
+            <MudNavLink Href="/visualbasic-translator" Icon="@Icons.Material.Filled.Chat" Match="NavLinkMatch.Prefix">C#/VB.Net Translator</MudNavLink>
+            <MudNavLink Href="#" Icon="@Icons.Material.Filled.Favorite" Match="NavLinkMatch.Prefix">Favorites(Coming soon!)</MudNavLink>
+            <MudNavLink Href="#" Icon="@Icons.Material.Filled.SettingsApplications" Match="NavLinkMatch.Prefix">settings(Coming soon!)</MudNavLink>
+            <MudNavLink Href="#" Icon="@Icons.Material.Filled.Feedback" Match="NavLinkMatch.Prefix">FeedBack(ComingSoon!)</MudNavLink>
+        </MudNavGroup>
+
+        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+        @*<MudNavLink Href="/Identity/Account/Manage" Icon="@Icons.Material.Filled.Settings" Match="NavLinkMatch.Prefix">Profile settings</MudNavLink>*@
+        <MudNavLink Href="/contact" Icon="@Icons.Material.Filled.Mail" Match="NavLinkMatch.Prefix">Contact Us</MudNavLink>
+    </AuthorizeView>
+
     <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
         <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-800 hover:text-gray-900  hover:bg-gray-300 transition duration-300" @onclick="() => SideBarOpen = false">Close</button>
     </div>
@@ -59,8 +73,9 @@
     public bool SideBarOpen { get; set; } = true;
 
     private static class SD
-        {
-            public const string Role_Admin = "Admin";
-            public const string Role_LightningChats = "LightningChats";
-        }
+    {
+        public const string Role_Admin = "Admin";
+        public const string Role_LightningChats = "LightningChats";
+        public const string Role_CodeTranslator = "CodeTranslator";
+    }
 }
