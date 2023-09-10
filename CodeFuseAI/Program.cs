@@ -5,8 +5,8 @@ using CodeFuseAI_Shared.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using CodeFuseAI_Shared.Data;
 using MudBlazor.Services;
-using CodeFuseAI.Service.IService;
-using CodeFuseAI.Service;
+using CodeFuseAI_Apps.Service.IService;
+using CodeFuseAI_Apps.Service;
 using Syncfusion.Blazor;
 using Microsoft.AspNetCore.Identity;
 
@@ -36,6 +36,8 @@ builder.Services.AddSyncfusionBlazor();
 builder.Services.AddScoped<IOpenAiApiService, OpenAiApiService>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<ICodeTranslationService, CodeTranslationService>();
+builder.Services.AddScoped<IMindCraftProService, MindCraftProService>();
+
 
 
 var app = builder.Build();

@@ -3,22 +3,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Text.RegularExpressions;
-using CodeFuseAI.Service.IService;
+using CodeFuseAI_Apps.Service.IService;
 using ColorCode;
 
-namespace CodeFuseAI.Pages.CodeTranslators
+namespace CodeFuseAI_Apps.Pages.CodeTranslators
 {
 
     public class VisualBasicBase : ComponentBase
     {
         [Inject]
-        protected ICodeTranslationService _codeTranslationService { get; set; }
+        protected ICodeTranslationService? _codeTranslationService { get; set; }
 
         [Inject]
-        protected NavigationManager _navigationManager { get; set; }
-
-        [Inject]
-        protected ISnackbar snackBar { get; set; }
+        public ISnackbar? _snackBar { get; set; }
 
         public TranslationDirection selectedOption { get; set; } = TranslationDirection.VbNetToCSharp;
 
@@ -69,14 +66,14 @@ namespace CodeFuseAI.Pages.CodeTranslators
             if (isSwitched && !IsCSharpCodeSnippet(inputCode))
             {
                 ErrorMessage = "Please provide a valid C# code snippet.";
-                snackBar.Add(ErrorMessage, Severity.Error);
+                _snackBar.Add(ErrorMessage, Severity.Error);
                 IsProcessing = false;
                 return;
             }
             else if (!isSwitched && !IsVBNetCodeSnippet(inputCode))
             {
                 ErrorMessage = "Please provide a valid VB.NET code snippet.";
-                snackBar.Add(ErrorMessage, Severity.Error);
+                _snackBar.Add(ErrorMessage, Severity.Error);
                 IsProcessing = false;
                 return;
             }

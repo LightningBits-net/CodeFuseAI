@@ -1,11 +1,11 @@
 ﻿using System;
-using CodeFuseAI.Service.IService;
+using CodeFuseAI_Apps.Service.IService;
 using System.Security.Claims;
 using CodeFuseAI_Shared.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CodeFuseAI.Service
+namespace CodeFuseAI_Apps.Service
 {
     public class ClientService : IClientService
     {

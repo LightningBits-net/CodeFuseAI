@@ -1,10 +1,10 @@
 ﻿// LightningBits
 using System;
 using Azure.Core;
-using CodeFuseAI.Service.IService;
+using CodeFuseAI_Apps.Service.IService;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace CodeFuseAI.Service
+namespace CodeFuseAI_Apps.Service
 {
     public class FileUpload : IFileUpload
     {

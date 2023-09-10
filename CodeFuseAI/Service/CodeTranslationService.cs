@@ -2,10 +2,10 @@
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using CodeFuseAI.Service.IService;
+using CodeFuseAI_Apps.Service.IService;
 using static Microsoft.CodeAnalysis.AssemblyIdentityComparer;
 
-namespace CodeFuseAI.Service
+namespace CodeFuseAI_Apps.Service
 {
     public class CodeTranslationService : ICodeTranslationService
     {

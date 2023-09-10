@@ -87,7 +87,7 @@
                             {
                             @if (IsCSharpCodeSnippet(outputCode))
                                 {
-                                    var colorizedCode = HighlightCode(outputCode, "c#");
+                                    var colorizedCode = HighlightCode(outputCode, "csharp");
                                 <div class=" p-10 rounded-md overflow-auto max-w-full text-lg">
                                     <pre class="whitespace-pre-wrap"><code>@((MarkupString)colorizedCode)</code></pre>
                                 </div>

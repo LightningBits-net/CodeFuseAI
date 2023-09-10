@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CodeFuseAI.Areas.Identity.Pages.Account.Manage
+namespace CodeFuseAI_Apps.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {

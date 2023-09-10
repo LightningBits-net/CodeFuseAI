@@ -2,7 +2,7 @@
 
 
 
-namespace CodeFuseAI.Service.IService
+namespace CodeFuseAI_Apps.Service.IService
 {
     public interface IClientService
     {

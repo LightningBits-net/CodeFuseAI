@@ -12,23 +12,23 @@ using CodeFuseAI_Shared.Repository.IRepository;
 using CodeFuseAI_Apps.Service.IService;
 using Microsoft.Extensions.Configuration;
 
-
 namespace CodeFuseAI_Apps.Service
 {
-    public class OpenAiApiService : IOpenAiApiService
+    public class MindCraftProService : IMindCraftProService
     {
+
         private readonly HttpClient _httpClient;
         private readonly string _apiKey;
         private readonly IConversationRepository _conversationRepository;
 
-        public OpenAiApiService(HttpClient httpClient, IConfiguration configuration, IConversationRepository conversationRepository)
+        public MindCraftProService(HttpClient httpClient, IConfiguration configuration, IConversationRepository conversationRepository)
         {
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri("https://api.openai.com/");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-           
+
             //_apiKey = configuration["APIKeys:MyChatGPTAPI"];
             //_apiKey = configuration["APIKeys:KenChatGPTAPI"];
             _apiKey = configuration["APIKeys:MyChatGPTDEVKEY2"];
@@ -37,6 +37,7 @@ namespace CodeFuseAI_Apps.Service
 
             _conversationRepository = conversationRepository;
         }
+
 
         public async Task<string> SendMessageAsync(int conversationId, string prompt)
         {
@@ -60,7 +61,7 @@ namespace CodeFuseAI_Apps.Service
                 var messages = new List<object>
                 {
                     new
-                    {  
+                    {
                         role = "system",
                         content = systemContext
                     },
@@ -112,12 +113,7 @@ namespace CodeFuseAI_Apps.Service
         {
             return "I'm sorry, I couldn't provide a response at the moment, please try again";
         }
+
     }
 }
-
-
-
-
-
-
 

@@ -2,7 +2,7 @@
 using System;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace CodeFuseAI.Service.IService
+namespace CodeFuseAI_Apps.Service.IService
 {
     public interface IFileUpload
     {

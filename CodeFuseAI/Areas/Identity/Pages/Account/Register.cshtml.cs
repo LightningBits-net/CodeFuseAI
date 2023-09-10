@@ -22,7 +22,7 @@ using Microsoft.Extensions.Logging;
 using CodeFuseAI_Shared.Commons;
 
 
-namespace CodeFuseAI.Areas.Identity.Pages.Account
+namespace CodeFuseAI_Apps.Areas.Identity.Pages.Account
 {
     //[Authorize(Roles = SD.Role_Admin + "," + SD.Role_Client)]
     [Authorize(Roles = SD.Role_Admin)]

@@ -1,6 +1,6 @@
 ﻿
 using System;
-using CodeFuseAI.Service.IService;
+using CodeFuseAI_Apps.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor;
@@ -9,7 +9,7 @@ using CodeFuseAI_Shared.Data;
 
 
 
-namespace CodeFuseAI.Service
+namespace CodeFuseAI_Apps.Service
 {
     public class DbInitializer : IDbInitializer
     {

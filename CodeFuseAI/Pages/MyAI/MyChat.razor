@@ -369,7 +369,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        clientId = await ClientService.GetClientIdAsync();
+        clientId = await _clientService.GetClientIdAsync();
 
         if (clientId != 0)
         {

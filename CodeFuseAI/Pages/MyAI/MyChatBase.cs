@@ -1,13 +1,13 @@
 ﻿//using System;
-//using CodeFuseAI.Service;
-//using CodeFuseAI.Service.IService;
+//using CodeFuseAI_Apps.Service;
+//using CodeFuseAI_Apps.Service.IService;
 //using Microsoft.AspNetCore.Components;
 //using MudBlazor;
 //using CodeFuseAI_Shared.Data;
 //using CodeFuseAI_Shared.Models;
 //using CodeFuseAI_Shared.Repository.IRepository;
 
-//namespace CodeFuseAI.Pages.MyAI
+//namespace CodeFuseAI_Apps.Pages.MyAI
 //{
 //    public class ChatBase : CustomComponentBase
 //    {
