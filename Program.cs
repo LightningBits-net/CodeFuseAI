@@ -59,7 +59,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-SeedDataBase();
+//SeedDataBase();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -69,11 +69,11 @@ app.MapFallbackToPage("/_Host");
 app.Run();
 
 
-void SeedDataBase()
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-        dbInitializer.Initialize();
-    }
-}
+//void SeedDataBase()
+//{
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+//        dbInitializer.Initialize();
+//    }
+//}

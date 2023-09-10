@@ -3,7 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-<!--    <UserSecretsId>cf3a4850-3736-4fb5-a74e-8fb2ef774d30</UserSecretsId>-->
+   <!-- <UserSecretsId>cf3a4850-3736-4fb5-a74e-8fb2ef774d30</UserSecretsId>-->
     <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
@@ -31,9 +31,8 @@
     <PackageReference Include="ColorCode.HTML" Version="2.0.15" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeFuseAI_Shared\CodeFuseAI_Shared.csproj">
+    <ProjectReference Include="..\CodeFuseAI_BackEnd\CodeFuseAI_BackEnd\CodeFuseAI_Shared\CodeFuseAI_Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
-
 </Project>
